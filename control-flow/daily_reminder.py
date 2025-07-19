@@ -1,6 +1,7 @@
+# Prompt user for task input
 task = input("Enter your task: ")
 
-# Prompt for task's priority
+# Prompt for the task's priority
 priority = input("Priority (high/medium/low): ").lower()
 
 # Ask if the task is time-bound
@@ -37,7 +38,9 @@ else: # If not time-bound
         reminder_message += ". It can be completed at your convenience."
     elif priority == 'high':
         reminder_message += ". Ensure it's completed soon, even if not strictly time-bound today."
-    # If priority is unrecognized, the initial message already covers it.
+    else: # Added this specific case for unrecognized priority AND not time-bound
+        reminder_message += ". Its time sensitivity is not clear. Review when to complete."
 
 # Output the customized reminder
 print(reminder_message)
+
