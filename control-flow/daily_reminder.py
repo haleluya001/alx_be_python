@@ -18,28 +18,25 @@ match priority:
         reminder_message = f"Note: '{task}' is a medium priority task"
     case 'low':
         reminder_message = f"Note: '{task}' is a low priority task"
-    case _:
+    case _: # Default case for unrecognized priority
         reminder_message = f"'{task}' has an unrecognized priority level"
 
-# Modify the reminder if the task is time-bound
+# Modify the reminder based on time sensitivity
 if time_bound == 'yes':
-    if priority == 'high': # Only high priority time-bound tasks require immediate attention today
+    if priority == 'high':
+        # Specific message for high priority, time-bound tasks as per example
         reminder_message += " that requires immediate attention today!"
-    elif priority == 'medium':
-        reminder_message += " and is time-bound. Plan accordingly."
-    elif priority == 'low':
-        reminder_message += ". It is time-bound, but can be done when you have free time."
-    else: # For unrecognized priority that is time-bound
-        reminder_message += " and is time-bound. Please review its urgency."
+    else:
+        # Generic time-bound message for other priorities
+        reminder_message += " and is time-bound."
 else: # If not time-bound
     if priority == 'low':
+        # Specific message for low priority, non-time-bound tasks as per example
         reminder_message += ". Consider completing it when you have free time."
-    elif priority == 'medium':
-        reminder_message += ". It can be completed at your convenience."
-    elif priority == 'high':
-        reminder_message += ". Ensure it's completed soon, even if not strictly time-bound today."
-    else: # Added this specific case for unrecognized priority AND not time-bound
-        reminder_message += ". Its time sensitivity is not clear. Review when to complete."
+    else:
+        # Generic non-time-bound message for high, medium, or unrecognized priorities
+        reminder_message += ". It is not time-bound."
 
 # Output the customized reminder
 print(reminder_message)
+
