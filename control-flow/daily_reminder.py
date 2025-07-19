@@ -43,4 +43,3 @@ else: # If not time-bound
 
 # Output the customized reminder
 print(reminder_message)
-
