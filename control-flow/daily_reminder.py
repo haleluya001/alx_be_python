@@ -19,7 +19,8 @@ match priority:
     case 'low':
         reminder_message = f"Note: '{task}' is a low priority task"
     case _: # Default case for unrecognized priority
-        reminder_message = f"'{task}' has an unrecognized priority level"
+        # Ensure unrecognized priority messages also start with "Note: " for consistency
+        reminder_message = f"Note: '{task}' has an unrecognized priority level"
 
 # Modify the reminder based on time sensitivity
 if time_bound == 'yes':
@@ -27,15 +28,17 @@ if time_bound == 'yes':
         # Specific message for high priority, time-bound tasks as per example
         reminder_message += " that requires immediate attention today!"
     else:
-        # Generic time-bound message for other priorities
-        reminder_message += " and is time-bound."
+        # Generic time-bound message for other priorities (medium, unrecognized)
+        # Added a leading dot for consistency with other messages
+        reminder_message += ". This task is time-bound."
 else: # If not time-bound
     if priority == 'low':
         # Specific message for low priority, non-time-bound tasks as per example
         reminder_message += ". Consider completing it when you have free time."
     else:
         # Generic non-time-bound message for high, medium, or unrecognized priorities
-        reminder_message += ". It is not time-bound."
+        # Added a leading dot for consistency
+        reminder_message += ". This task is not time-bound."
 
 # Output the customized reminder
 print(reminder_message)
