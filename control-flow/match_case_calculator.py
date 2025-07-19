@@ -15,21 +15,23 @@ except ValueError:
 # Ask for the type of operation
 operation = input("Choose the operation (+, -, *, /): ")
 
-# Perform the calculation using if-elif-else statements
-if operation == '+':
-    result = num1 + num2
-    print(f"The result is {result}.")
-elif operation == '-':
-    result = num1 - num2
-    print(f"The result is {result}.")
-elif operation == '*':
-    result = num1 * num2
-    print(f"The result is {result}.")
-elif operation == '/':
-    if num2 == 0:
-        print("Cannot divide by zero.")
-    else:
-        result = num1 / num2
+# Perform the calculation using a match-case statement
+match operation:
+    case '+':
+        result = num1 + num2
         print(f"The result is {result}.")
-else: # Handles unexpected input
-    print("Invalid operation. Please choose from +, -, *, /.")
+    case '-':
+        result = num1 - num2
+        print(f"The result is {result}.")
+    case '*':
+        result = num1 * num2
+        print(f"The result is {result}.")
+    case '/':
+        if num2 == 0:
+            print("Cannot divide by zero.")
+        else:
+            result = num1 / num2
+            print(f"The result is {result}.")
+    case _: # Default case for unexpected input
+        print("Invalid operation. Please choose from +, -, *, /.")
+
