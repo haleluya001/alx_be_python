@@ -1,5 +1,6 @@
+# arithmetic_operations.py
 
-def perform_operation(num1: float, num2: float, operation: str):
+def perform_operation(num1, num2, operation): # Removed type hints
     """
     Performs basic arithmetic operations on two numbers.
 
