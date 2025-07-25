@@ -1,6 +1,6 @@
 def display_menu():
     """Displays the main menu options to the user."""
-    print("\nShopping List Manager")
+    print("Shopping List Manager") # Removed the leading newline character
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
@@ -54,5 +54,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
