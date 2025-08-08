@@ -3,7 +3,7 @@
 library_system.py
 
 This script defines a set of classes to model a simple library system,
-demonstrating inheritance and composition in Python.
+demonstrating inheritance, composition, and polymorphism in Python.
 """
 
 class Book:
@@ -20,6 +20,12 @@ class Book:
         """
         self.title = title
         self.author = author
+
+    def __str__(self):
+        """
+        Returns a string representation of the Book object.
+        """
+        return f"Book: {self.title} by {self.author}"
 
 class EBook(Book):
     """
@@ -40,6 +46,12 @@ class EBook(Book):
         super().__init__(title, author)
         self.file_size = file_size
 
+    def __str__(self):
+        """
+        Overrides the __str__ method to include the file size.
+        """
+        return f"EBook: {self.title} by {self.author}, File Size: {self.file_size}KB"
+
 class PrintBook(Book):
     """
     A derived class representing a physical print book.
@@ -58,6 +70,12 @@ class PrintBook(Book):
         # Call the base class constructor to initialize title and author
         super().__init__(title, author)
         self.page_count = page_count
+
+    def __str__(self):
+        """
+        Overrides the __str__ method to include the page count.
+        """
+        return f"PrintBook: {self.title} by {self.author}, Page Count: {self.page_count}"
 
 class Library:
     """
@@ -82,13 +100,8 @@ class Library:
     def list_books(self):
         """
         Prints the details of each book in the library's collection.
-        The output format depends on the type of book.
+        This method now uses polymorphism by calling the __str__ method
+        of each book object.
         """
         for book in self.books:
-            if isinstance(book, EBook):
-                print(f"EBook: {book.title} by {book.author}, File Size: {book.file_size}KB")
-            elif isinstance(book, PrintBook):
-                print(f"PrintBook: {book.title} by {book.author}, Page Count: {book.page_count}")
-            else:
-                # This will catch instances of the base Book class
-                print(f"Book: {book.title} by {book.author}")
+            print(book)
